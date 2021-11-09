@@ -107,17 +107,25 @@ tooling:
         interactive:
           type: input
           message: |
-            Fetch your GitHub token and then press any key to continue...
+            Fetch your GitHub username and personal token and then press any key to continue...
 
             https://github.com/settings/tokens
           weight: 600
 
-      github-token:
+      github-username:
         passthrough: true
-        describe: GitHub Token
+        describe: GitHub Username
+        interactive:
+          type: input
+          message: GitHub Username
+          weight: 600
+
+      github-personal-token:
+        passthrough: true
+        describe: GitHub Personal Token
         interactive:
           type: password
-          message: GitHub Token
+          message: GitHub Personal Token
           weight: 600
 
   magento:setup:quick:

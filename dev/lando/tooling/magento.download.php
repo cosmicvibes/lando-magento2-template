@@ -9,7 +9,8 @@ class magentoDownloaderCli
         'mage-version',
         'mage-access-key-public',
         'mage-access-key-private',
-        'github-token',
+        'github-username',
+        'github-personal-token',
     ];
 
     public function __construct(array $argv)
@@ -100,10 +101,11 @@ class magentoDownloaderCli
     {
         $input = $this->getInput();
         $composerAuth = sprintf(
-            '{"http-basic": {"repo.magento.com": {"username": "%s","password": "%s"}}, "github-oauth": {"github.com": "%s"}}',
+            '{"http-basic": {"repo.magento.com": {"username": "%s","password": "%s"}}, "github.com": {"github.com": {"username": "%s","password": "%s"}}}',
             $input['mage-access-key-public'],
             $input['mage-access-key-private'],
-            $input['github-token']
+            $input['github-username'],
+            $input['github-personal-token']
             );
         try {
             $this->createProject($composerAuth, $input);
