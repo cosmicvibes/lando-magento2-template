@@ -57,6 +57,12 @@ services:
     type: elasticsearch:7
     portforward: 9200
 
+  mailhog:
+    type: mailhog
+    portforward: true
+    hogfrom:
+      - appserver
+
 tooling:
   magento:download:
     description: Initialize Magento 2 project in current directory
