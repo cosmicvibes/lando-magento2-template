@@ -49,8 +49,13 @@ services:
     build_as_root:
       # Install Magento-required xsl extension
       - apt-get update -y -q && apt-get install -y libxslt-dev && docker-php-ext-install xsl && docker-php-ext-install sockets
+
   node:
     type: 'node:12'
+
+  elasticsearch:
+    type: elasticsearch:7
+    portforward: 9200
 
 tooling:
   magento:download:
@@ -130,7 +135,7 @@ tooling:
 
   magento:setup:quick:
     description: Automated process to quickly configure Magento for Lando. Accepts `bin/magento setup:install` arguments
-    cmd: test -f /app/bin/magento || exit 0 && /app/bin/magento setup:install --db-host database --db-name lemp --db-user lemp --db-password lemp --magento-init-params="MAGE_MODE=developer"
+    cmd: test -f /app/bin/magento || exit 0 && /app/bin/magento setup:install --elasticsearch-host elasticsearch --elasticsearch-port 9200 --db-host database --db-name lemp --db-user lemp --db-password lemp --magento-init-params="MAGE_MODE=developer"
     service: appserver
     options: # Options are required in order for `lando --help` to work for this command
       "help":
