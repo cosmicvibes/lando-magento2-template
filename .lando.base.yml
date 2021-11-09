@@ -21,7 +21,7 @@ proxy:
 # Configure the LEMP recipe
 config:
   # PHP 7.2 for Magento 2.2.3 - adjust as needed
-  php: '7.2'
+  php: '7.3'
   webroot: pub
   database: mysql
   composer_version: '1.10.23'
@@ -75,7 +75,7 @@ tooling:
         describe: Magento Version
         interactive:
           type: input
-          default: 2.4
+          default: 2.4.3
           message: Magento Version
           weight: 600
 
