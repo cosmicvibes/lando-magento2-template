@@ -48,7 +48,7 @@ services:
     # This will only run the first time `lando start` is executed or on `lando rebuild`
     build_as_root:
       # Install Magento-required xsl extension
-      - apt-get update -y -q && apt-get install -y libxslt-dev && docker-php-ext-install xsl
+      - apt-get update -y -q && apt-get install -y libxslt-dev && docker-php-ext-install xsl && docker-php-ext-install sockets
   node:
     type: 'node:12'
 
