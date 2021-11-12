@@ -55,7 +55,6 @@ services:
 
   elasticsearch:
     type: elasticsearch:7
-    portforward: 9200
 
   mailhog:
     type: mailhog
@@ -86,7 +85,7 @@ tooling:
         describe: Magento Version
         interactive:
           type: input
-          default: 2.4.3
+          default: 2.3.5
           message: Magento Version
           weight: 600
 
